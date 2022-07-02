@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TodoApp</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/style.css' %}" />
+  </head>
+  <body>
+    <h1>TODO APP</h1>
+
+    {% if item %}
+    <form class="form" action="{% url 'updatetask' id %}" method="POST">
+      {% csrf_token %}
+      <input
+        id="task"
+        name="task"
+        type="text"
+        placeholder="Enter your task"
+        value="{{ item }}"
+      />
+      <button type="submit">Submit</button>
+    </form>
+    {% else %}
+    <form class="form" action="{% url 'addtask' %}" method="POST">
+      {% csrf_token %}
+      <input name="task1" type="text" placeholder="Enter your task" />
+      <button type="submit">Submit</button>
+    </form>
+    {% endif %} {% if list %} {% for i in list %}
+    <div class="task">
+      <div>
+        <span>{{ i.task }}</span>
+
+        <!-- <span>{{ i.id }}</span> -->
+      </div>
+      <span>{{ i.date }}</span>
+      <div class="form-btn">
+        <form action="{% url 'deletetask' i.id %}" method="GET">
+          {% csrf_token %}
+          <p><button type="submit">delete</button></p>
+        </form>
+        <form action="{% url 'updatepage' i.id i.task %}" method="GET">
+          {% csrf_token %}
+          <p><button type="submit">update</button></p>
+        </form>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h3>No Data</h3>
+    {% endif %}
+  </body>
+</html>
