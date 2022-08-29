@@ -22,7 +22,7 @@ def index(request):
 def addtask(request):
     domain=get_current_site(request)
     url='http://'+str(domain)+'/readcreate'
-    data={'task':request.POST['task']}
+    data={'task':request.POST['task1']}
     x=requests.post(url,data)
     return redirect(index)
 
@@ -40,8 +40,6 @@ def updatepage(request,id,task):
 def updatetask(request,id):
     domain=get_current_site(request)
     url = 'http://'+str(domain)+'/getupdatedelete/'
-    # import pdb
-    # pdb.set_trace()
     data={'task':request.POST['task']}
     requests.put(url + str(id),data)
     return redirect(index)
