@@ -6,5 +6,5 @@ from django.db import models
 # Create your models here.
 class Tasks(models.Model):
     task=models.CharField(max_length=100)
-    date=models.DateField(default=datetime.datetime.today)
+    date=models.DateField(auto_now=True)
     is_complete=models.BooleanField(default=False)

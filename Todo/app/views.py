@@ -1,6 +1,5 @@
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect
-from rest_framework.response import Response
 from rest_framework.viewsets import generics
 from . serializer import TaskSerilizer
 from .models import Tasks
