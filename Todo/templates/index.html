@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>TodoApp</title>
+    <title>TodoApp for Planner People</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/style.css' %}" />
   </head>
   <body>
-    <h1>TODO APP</h1>
+    <h1>TODO APP FOR PLANNER PEOPLE</h1>
 
     {% if item %}
     <form class="form" action="{% url 'updatetask' id %}" method="POST">
